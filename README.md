@@ -7,5 +7,5 @@ docker run -i --cap-add=SYS_ADMIN --name puppeteer-docker-container puppeteer-do
 
 # 作成したPDFの確認
 # コンテナからローカルにコピー
-docker cp puppeteer-docker-container:/usr/local/app/test.pdf .
+docker cp puppeteer-docker-container:/usr/local/app/test.png . && docker cp puppeteer-docker-container:/usr/local/app/test.pdf .
 ```
