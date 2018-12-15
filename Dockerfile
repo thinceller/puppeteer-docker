@@ -1,3 +1,4 @@
+# https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 FROM node:8.12-alpine
 
 WORKDIR /usr/local/app
@@ -12,12 +13,15 @@ RUN apk update && apk upgrade && \
 
 # Install Japanese font
 # https://qiita.com/nju33/items/b80d92a4257edeb4b9a1
-RUN apk update && \
-    apk add --no-cache curl fontconfig && \
+RUN apk add --no-cache curl fontconfig && \
     curl -O https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip && \
-    mkdir -p /usr/share/fonts/NotoSansCJKjp && \
-    unzip NotoSansCJKjp-hinted.zip -d /usr/share/fonts/NotoSansCJKjp/ && \
+    mkdir -p /usr/share/fonts/noto && \
+    unzip NotoSansCJKjp-hinted.zip -d /usr/share/fonts/noto && \
     rm NotoSansCJKjp-hinted.zip && \
+    curl -OL https://ipafont.ipa.go.jp/old/ipafont/IPAfont00303.php && \
+    mkdir -p /usr/share/fonts/ipa && \
+    unzip IPAfont00303.php -d /usr/share/fonts/ipa && \
+    rm IPAfont00303.php && \
     fc-cache -fv
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
