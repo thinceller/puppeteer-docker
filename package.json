@@ -1,0 +1,14 @@
+{
+  "name": "puppeteer-docker",
+  "version": "1.0.0",
+  "description": "use puppeteer on docker container",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "thinceller",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^1.11.0"
+  }
+}
